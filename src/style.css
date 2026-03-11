@@ -25,8 +25,9 @@
   --spacing-xl: 3rem;
 
   /* Typography */
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --font-size-base: 16px;
   --line-height: 1.6;
 
@@ -106,7 +107,9 @@ body {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 
 .card:hover {
@@ -161,7 +164,9 @@ body {
   font-weight: 500;
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background-color var(--transition), transform var(--transition);
+  transition:
+    background-color var(--transition),
+    transform var(--transition);
   font-family: var(--font-family);
 }
 
@@ -176,6 +181,96 @@ body {
 
 .button:focus-visible {
   outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Counter Card Styles */
+.counter-card {
+  background: linear-gradient(135deg, #5826ff 0%, #6b3fff 100%);
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(88, 38, 255, 0.3);
+}
+
+.counter-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 48px rgba(88, 38, 255, 0.4);
+}
+
+.counter-title {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: var(--spacing-lg);
+  font-family: 'Inter', var(--font-family);
+}
+
+.counter-display {
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: 400;
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-family);
+}
+
+.counter-controls {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  margin-top: var(--spacing-lg);
+}
+
+.counter-button {
+  background-color: #ffdb10;
+  color: #000000;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: 'Inter', var(--font-family);
+  text-transform: capitalize;
+  min-width: 100px;
+  letter-spacing: 0.5px;
+}
+
+.counter-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 219, 16, 0.4);
+}
+
+.counter-button:active {
+  transform: translateY(0);
+}
+
+.counter-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.counter-button-decrement {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+
+.counter-button-decrement:hover {
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+}
+
+.counter-button:focus-visible {
+  outline: 2px solid #ffffff;
   outline-offset: 2px;
 }
 
@@ -195,5 +290,23 @@ body {
 
   .card {
     padding: var(--spacing-md);
+  }
+
+  .counter-card {
+    padding: var(--spacing-lg);
+  }
+
+  .counter-display {
+    font-size: 2.5rem;
+    min-height: 60px;
+  }
+
+  .counter-controls {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .counter-button {
+    width: 100%;
   }
 }

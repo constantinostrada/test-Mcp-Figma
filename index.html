@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,25 +15,25 @@
       </header>
 
       <main class="main">
-        <section class="card">
-          <h2>Welcome!</h2>
-          <p>
-            This is a production-ready boilerplate with Vite, ESLint, and
-            Prettier.
-          </p>
-          <button id="counter-btn" class="button" type="button">
-            Count is: <span id="counter">0</span>
-          </button>
-        </section>
-
-        <section class="card">
-          <h3>Get Started</h3>
-          <ul class="feature-list">
-            <li>⚡️ Lightning-fast HMR with Vite</li>
-            <li>🎨 Modern CSS with best practices</li>
-            <li>📦 Optimized production builds</li>
-            <li>✨ Code quality with ESLint & Prettier</li>
-          </ul>
+        <section class="counter-card">
+          <h2 class="counter-title">Counter App</h2>
+          <div class="counter-display" id="counter-display">0</div>
+          <div class="counter-controls">
+            <button
+              id="increment-btn"
+              class="counter-button counter-button-increment"
+              type="button"
+            >
+              Increment
+            </button>
+            <button
+              id="decrement-btn"
+              class="counter-button counter-button-decrement"
+              type="button"
+            >
+              Decrement
+            </button>
+          </div>
         </section>
       </main>
 

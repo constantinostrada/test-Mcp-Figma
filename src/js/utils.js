@@ -3,6 +3,7 @@
  * @param {string} name - The name to greet
  */
 export function greet(name) {
+  // eslint-disable-next-line no-console
   console.log(`🚀 Welcome to ${name}!`);
 }
 
