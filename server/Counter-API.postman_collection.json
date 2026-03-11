@@ -1,0 +1,581 @@
+{
+  "info": {
+    "name": "Counter API",
+    "description": "Complete collection of Counter API endpoints with examples",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "counter-api"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Counter Operations",
+      "item": [
+        {
+          "name": "Get Counter Value",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/counter",
+              "host": ["{{baseUrl}}"],
+              "path": ["counter"]
+            },
+            "description": "Retrieves the current counter value"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/counter",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["counter"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n    \"value\": 5,\n    \"timestamp\": \"2024-01-15T10:30:00.000Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Increment Counter (Default)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/counter/increment",
+              "host": ["{{baseUrl}}"],
+              "path": ["counter", "increment"]
+            },
+            "description": "Increments the counter by 1 (default)"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/counter/increment",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["counter", "increment"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n    \"value\": 6,\n    \"previousValue\": 5,\n    \"change\": 1,\n    \"operation\": \"increment\",\n    \"timestamp\": \"2024-01-15T10:30:00.000Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Increment Counter (Custom Amount)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 5\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/counter/increment",
+              "host": ["{{baseUrl}}"],
+              "path": ["counter", "increment"]
+            },
+            "description": "Increments the counter by a specified amount"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"amount\": 5\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/counter/increment",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["counter", "increment"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n    \"value\": 11,\n    \"previousValue\": 6,\n    \"change\": 5,\n    \"operation\": \"increment\",\n    \"timestamp\": \"2024-01-15T10:30:00.000Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Decrement Counter (Default)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/counter/decrement",
+              "host": ["{{baseUrl}}"],
+              "path": ["counter", "decrement"]
+            },
+            "description": "Decrements the counter by 1 (default)"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/counter/decrement",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["counter", "decrement"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n    \"value\": 10,\n    \"previousValue\": 11,\n    \"change\": -1,\n    \"operation\": \"decrement\",\n    \"timestamp\": \"2024-01-15T10:30:00.000Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Decrement Counter (Custom Amount)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/counter/decrement",
+              "host": ["{{baseUrl}}"],
+              "path": ["counter", "decrement"]
+            },
+            "description": "Decrements the counter by a specified amount"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"amount\": 3\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/counter/decrement",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["counter", "decrement"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n    \"value\": 7,\n    \"previousValue\": 10,\n    \"change\": -3,\n    \"operation\": \"decrement\",\n    \"timestamp\": \"2024-01-15T10:30:00.000Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Reset Counter (to Zero)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/counter/reset",
+              "host": ["{{baseUrl}}"],
+              "path": ["counter", "reset"]
+            },
+            "description": "Resets the counter to 0"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/counter/reset",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["counter", "reset"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n    \"value\": 0,\n    \"previousValue\": 7,\n    \"operation\": \"reset\",\n    \"timestamp\": \"2024-01-15T10:30:00.000Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Reset Counter (to Custom Value)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"value\": 100\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/counter/reset",
+              "host": ["{{baseUrl}}"],
+              "path": ["counter", "reset"]
+            },
+            "description": "Resets the counter to a specified value"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"value\": 100\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/counter/reset",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["counter", "reset"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n    \"value\": 100,\n    \"previousValue\": 0,\n    \"operation\": \"reset\",\n    \"timestamp\": \"2024-01-15T10:30:00.000Z\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Error Handling Examples",
+      "item": [
+        {
+          "name": "Invalid Increment (Negative Amount)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": -5\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/counter/increment",
+              "host": ["{{baseUrl}}"],
+              "path": ["counter", "increment"]
+            },
+            "description": "Demonstrates validation error for negative amount"
+          },
+          "response": [
+            {
+              "name": "Error Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"amount\": -5\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/counter/increment",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["counter", "increment"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n    \"error\": \"Bad Request\",\n    \"message\": \"Amount must be a positive number\",\n    \"field\": \"amount\",\n    \"receivedValue\": -5\n}"
+            }
+          ]
+        },
+        {
+          "name": "Invalid Increment (String Amount)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": \"five\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/counter/increment",
+              "host": ["{{baseUrl}}"],
+              "path": ["counter", "increment"]
+            },
+            "description": "Demonstrates validation error for non-numeric amount"
+          },
+          "response": [
+            {
+              "name": "Error Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"amount\": \"five\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/counter/increment",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["counter", "increment"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n    \"error\": \"Bad Request\",\n    \"message\": \"Amount must be a valid number\",\n    \"field\": \"amount\",\n    \"receivedValue\": \"five\",\n    \"receivedType\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Invalid Reset (String Value)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"value\": \"zero\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/counter/reset",
+              "host": ["{{baseUrl}}"],
+              "path": ["counter", "reset"]
+            },
+            "description": "Demonstrates validation error for non-numeric reset value"
+          },
+          "response": [
+            {
+              "name": "Error Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"value\": \"zero\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/counter/reset",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["counter", "reset"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n    \"error\": \"Bad Request\",\n    \"message\": \"Value must be a valid number\",\n    \"field\": \"value\",\n    \"receivedValue\": \"zero\",\n    \"receivedType\": \"string\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Utility Endpoints",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            },
+            "description": "Check if the API server is running"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["health"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n    \"status\": \"ok\",\n    \"timestamp\": \"2024-01-15T10:30:00.000Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "API Documentation",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/docs",
+              "host": ["{{baseUrl}}"],
+              "path": ["docs"]
+            },
+            "description": "Get API documentation in JSON format"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/docs",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["docs"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n    \"title\": \"Counter API Documentation\",\n    \"version\": \"1.0.0\",\n    \"baseUrl\": \"/api\",\n    \"endpoints\": [...]\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
