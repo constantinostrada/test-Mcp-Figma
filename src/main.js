@@ -4,10 +4,14 @@ import { greet } from './js/utils.js';
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
-  // Setup counter button
-  const counterBtn = document.querySelector('#counter-btn');
-  if (counterBtn) {
-    setupCounter(counterBtn);
+  // Setup counter controls
+  const counterDisplay = document.querySelector('#counter');
+  const incrementBtn = document.querySelector('#increment-btn');
+  const decrementBtn = document.querySelector('#decrement-btn');
+  const resetBtn = document.querySelector('#reset-btn');
+
+  if (counterDisplay && incrementBtn && decrementBtn && resetBtn) {
+    setupCounter(counterDisplay, incrementBtn, decrementBtn, resetBtn);
   }
 
   // Log greeting message
