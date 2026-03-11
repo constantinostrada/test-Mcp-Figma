@@ -69,6 +69,31 @@ export const decrementCounter = (req, res, next) => {
 };
 
 /**
+ * Decrement the counter by ten
+ * @param {Request} req - Express request object
+ * @param {Response} res - Express response object
+ * @param {Function} next - Express next middleware function
+ */
+export const decrementByTen = (req, res, next) => {
+  try {
+    const amount = 10;
+    const previousValue = counter;
+
+    counter -= amount;
+
+    res.json({
+      value: counter,
+      previousValue,
+      change: -amount,
+      operation: 'decrement-by-ten',
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
  * Reset the counter to zero or a specified value
  * @param {Request} req - Express request object
  * @param {Response} res - Express response object

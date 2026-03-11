@@ -151,6 +151,32 @@ body {
   background-color: rgba(100, 108, 255, 0.1);
 }
 
+/* Counter Display */
+.counter-display {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.counter-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.counter-value span {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 /* Button */
 .button {
   background-color: var(--color-primary);
@@ -163,10 +189,27 @@ body {
   cursor: pointer;
   transition: background-color var(--transition), transform var(--transition);
   font-family: var(--font-family);
+  flex: 1;
+  min-width: 140px;
+}
+
+.button-primary {
+  background-color: var(--color-primary);
+}
+
+.button-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.button-secondary {
+  background-color: #f44336;
+}
+
+.button-secondary:hover {
+  background-color: #d32f2f;
 }
 
 .button:hover {
-  background-color: var(--color-primary-hover);
   transform: translateY(-1px);
 }
 
