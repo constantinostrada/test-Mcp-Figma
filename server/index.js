@@ -83,6 +83,22 @@ app.get('/api/docs', (req, res) => {
         },
       },
       {
+        path: '/counter/decrement-ten',
+        method: 'POST',
+        description: 'Decrement the counter by ten',
+        responses: {
+          200: {
+            description: 'Success',
+            example: {
+              value: -10,
+              previousValue: 0,
+              change: -10,
+              operation: 'decrement-by-ten',
+            },
+          },
+        },
+      },
+      {
         path: '/counter/reset',
         method: 'POST',
         description: 'Reset the counter to zero or a specified value',
@@ -123,6 +139,7 @@ app.use((req, res) => {
       'GET /api/counter',
       'POST /api/counter/increment',
       'POST /api/counter/decrement',
+      'POST /api/counter/decrement-ten',
       'POST /api/counter/reset',
     ],
   });

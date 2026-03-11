@@ -3,6 +3,7 @@ import {
   getCounter,
   incrementCounter,
   decrementCounter,
+  decrementByTen,
   resetCounter,
 } from '../controllers/counterController.js';
 import { validateCounterRequest } from '../middleware/validation.js';
@@ -31,6 +32,13 @@ router.post('/increment', validateCounterRequest, incrementCounter);
  * @body {amount?: number} - Amount to decrement (default: 1)
  */
 router.post('/decrement', validateCounterRequest, decrementCounter);
+
+/**
+ * @route POST /api/counter/decrement-ten
+ * @description Decrement the counter by ten
+ * @access Public
+ */
+router.post('/decrement-ten', decrementByTen);
 
 /**
  * @route POST /api/counter/reset
