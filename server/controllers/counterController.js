@@ -1,5 +1,26 @@
 // In-memory counter storage (in production, use a database)
 let counter = 0;
+let isLocked = false; // Simple mutex for demonstration
+
+// Helper function to acquire a lock
+const acquireLock = async () => {
+  return new Promise(resolve => {
+    const checkLock = () => {
+      if (!isLocked) {
+        isLocked = true;
+        resolve();
+      } else {
+        setTimeout(checkLock, 10); // Retry after a short delay
+      }
+    };
+    checkLock();
+  });
+};
+
+// Helper function to release a lock
+const releaseLock = () => {
+  isLocked = false;
+};
 
 /**
  * Get the current counter value
@@ -7,7 +28,7 @@ let counter = 0;
  * @param {Response} res - Express response object
  * @param {Function} next - Express next middleware function
  */
-export const getCounter = (req, res, next) => {
+export const getCounter = async (req, res, next) => {
   try {
     res.json({
       value: counter,
@@ -24,7 +45,8 @@ export const getCounter = (req, res, next) => {
  * @param {Response} res - Express response object
  * @param {Function} next - Express next middleware function
  */
-export const incrementCounter = (req, res, next) => {
+export const incrementCounter = async (req, res, next) => {
+  await acquireLock();
   try {
     const amount = req.body.amount || 1;
     const previousValue = counter;
@@ -40,6 +62,8 @@ export const incrementCounter = (req, res, next) => {
     });
   } catch (error) {
     next(error);
+  } finally {
+    releaseLock();
   }
 };
 
@@ -49,7 +73,8 @@ export const incrementCounter = (req, res, next) => {
  * @param {Response} res - Express response object
  * @param {Function} next - Express next middleware function
  */
-export const decrementCounter = (req, res, next) => {
+export const decrementCounter = async (req, res, next) => {
+  await acquireLock();
   try {
     const amount = req.body.amount || 1;
     const previousValue = counter;
@@ -65,6 +90,8 @@ export const decrementCounter = (req, res, next) => {
     });
   } catch (error) {
     next(error);
+  } finally {
+    releaseLock();
   }
 };
 
@@ -74,7 +101,8 @@ export const decrementCounter = (req, res, next) => {
  * @param {Response} res - Express response object
  * @param {Function} next - Express next middleware function
  */
-export const resetCounter = (req, res, next) => {
+export const resetCounter = async (req, res, next) => {
+  await acquireLock();
   try {
     const { value } = req.body;
     const previousValue = counter;
@@ -103,6 +131,8 @@ export const resetCounter = (req, res, next) => {
     });
   } catch (error) {
     next(error);
+  } finally {
+    releaseLock();
   }
 };
 
@@ -112,7 +142,8 @@ export const resetCounter = (req, res, next) => {
  * @param {Response} res - Express response object
  * @param {Function} next - Express next middleware function
  */
-export const incrementByFour = (req, res, next) => {
+export const incrementByFour = async (req, res, next) => {
+  await acquireLock();
   try {
     const previousValue = counter;
     const amount = 4;
@@ -128,5 +159,7 @@ export const incrementByFour = (req, res, next) => {
     });
   } catch (error) {
     next(error);
+  } finally {
+    releaseLock();
   }
 };
