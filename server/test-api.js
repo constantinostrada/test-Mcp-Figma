@@ -125,8 +125,29 @@ async function runTests() {
   );
   reset100.success ? passed++ : failed++;
 
-  // Test 10: Invalid increment (negative amount) - should fail
+  // Test 10: Increment by 4
+  const inc4 = await testEndpoint(
+    'Increment by 4',
+    'POST',
+    '/counter/increment-by-4'
+  );
+  inc4.success ? passed++ : failed++;
+
+  // Test 11: Get Counter Value (should be 104)
+  const current2 = await testEndpoint('Get Counter Value', 'GET', '/counter');
+  current2.success ? passed++ : failed++;
+
+  // Test 12: Reset to 0 for error testing
+  const resetForErrors = await testEndpoint(
+    'Reset to 0',
+    'POST',
+    '/counter/reset'
+  );
+  resetForErrors.success ? passed++ : failed++;
+
   log('\n📋 Testing Error Handling:', 'yellow');
+
+  // Test 14: Invalid increment (negative amount) - should fail
   const invalidInc = await testEndpoint(
     'Invalid Increment (negative)',
     'POST',
@@ -135,7 +156,7 @@ async function runTests() {
   );
   !invalidInc.success ? passed++ : failed++;
 
-  // Test 11: Invalid increment (string amount) - should fail
+  // Test 15: Invalid increment (string amount) - should fail
   const invalidInc2 = await testEndpoint(
     'Invalid Increment (string)',
     'POST',
@@ -144,7 +165,7 @@ async function runTests() {
   );
   !invalidInc2.success ? passed++ : failed++;
 
-  // Test 12: Invalid decrement (zero amount) - should fail
+  // Test 16: Invalid decrement (zero amount) - should fail
   const invalidDec = await testEndpoint(
     'Invalid Decrement (zero)',
     'POST',
@@ -153,7 +174,7 @@ async function runTests() {
   );
   !invalidDec.success ? passed++ : failed++;
 
-  // Test 13: Invalid reset (string value) - should fail
+  // Test 17: Invalid reset (string value) - should fail
   const invalidReset = await testEndpoint(
     'Invalid Reset (string)',
     'POST',
@@ -162,11 +183,11 @@ async function runTests() {
   );
   !invalidReset.success ? passed++ : failed++;
 
-  // Test 14: Get API Documentation
+  // Test 18: Get API Documentation
   const docs = await testEndpoint('Get API Documentation', 'GET', '/docs');
   docs.success ? passed++ : failed++;
 
-  // Test 15: Invalid endpoint - should fail
+  // Test 19: Invalid endpoint - should fail
   const invalid404 = await testEndpoint(
     'Invalid Endpoint (404)',
     'GET',

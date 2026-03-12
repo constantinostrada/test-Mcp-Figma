@@ -105,3 +105,28 @@ export const resetCounter = (req, res, next) => {
     next(error);
   }
 };
+
+/**
+ * Increment the counter by 4
+ * @param {Request} req - Express request object
+ * @param {Response} res - Express response object
+ * @param {Function} next - Express next middleware function
+ */
+export const incrementByFour = (req, res, next) => {
+  try {
+    const previousValue = counter;
+    const amount = 4;
+
+    counter += amount;
+
+    res.json({
+      value: counter,
+      previousValue,
+      change: amount,
+      operation: 'increment-by-4',
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    next(error);
+  }
+};

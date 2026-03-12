@@ -4,6 +4,7 @@ import {
   incrementCounter,
   decrementCounter,
   resetCounter,
+  incrementByFour,
 } from '../controllers/counterController.js';
 import { validateCounterRequest } from '../middleware/validation.js';
 
@@ -39,5 +40,12 @@ router.post('/decrement', validateCounterRequest, decrementCounter);
  * @body {value?: number} - Value to reset to (default: 0)
  */
 router.post('/reset', resetCounter);
+
+/**
+ * @route POST /api/counter/increment-by-4
+ * @description Increment the counter by 4
+ * @access Public
+ */
+router.post('/increment-by-4', incrementByFour);
 
 export default router;
