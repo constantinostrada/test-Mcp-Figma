@@ -125,7 +125,24 @@ async function runTests() {
   );
   reset100.success ? passed++ : failed++;
 
-  // Test 10: Invalid increment (negative amount) - should fail
+  // Test 10: Increment by 10,000
+  const inc10k = await testEndpoint(
+    'Increment by 10,000',
+    'POST',
+    '/counter/increment',
+    { amount: 10000 }
+  );
+  inc10k.success ? passed++ : failed++;
+
+  // Test 11: Get Counter Value (should be 10,100)
+  const current2 = await testEndpoint(
+    'Get Counter Value (should be 10,100)',
+    'GET',
+    '/counter'
+  );
+  current2.success ? passed++ : failed++;
+
+  // Test 12: Invalid increment (negative amount) - should fail
   log('\n📋 Testing Error Handling:', 'yellow');
   const invalidInc = await testEndpoint(
     'Invalid Increment (negative)',
@@ -135,7 +152,7 @@ async function runTests() {
   );
   !invalidInc.success ? passed++ : failed++;
 
-  // Test 11: Invalid increment (string amount) - should fail
+  // Test 13: Invalid increment (string amount) - should fail
   const invalidInc2 = await testEndpoint(
     'Invalid Increment (string)',
     'POST',
@@ -144,7 +161,7 @@ async function runTests() {
   );
   !invalidInc2.success ? passed++ : failed++;
 
-  // Test 12: Invalid decrement (zero amount) - should fail
+  // Test 14: Invalid decrement (zero amount) - should fail
   const invalidDec = await testEndpoint(
     'Invalid Decrement (zero)',
     'POST',
@@ -153,7 +170,7 @@ async function runTests() {
   );
   !invalidDec.success ? passed++ : failed++;
 
-  // Test 13: Invalid reset (string value) - should fail
+  // Test 15: Invalid reset (string value) - should fail
   const invalidReset = await testEndpoint(
     'Invalid Reset (string)',
     'POST',
@@ -162,11 +179,11 @@ async function runTests() {
   );
   !invalidReset.success ? passed++ : failed++;
 
-  // Test 14: Get API Documentation
+  // Test 16: Get API Documentation
   const docs = await testEndpoint('Get API Documentation', 'GET', '/docs');
   docs.success ? passed++ : failed++;
 
-  // Test 15: Invalid endpoint - should fail
+  // Test 17: Invalid endpoint - should fail
   const invalid404 = await testEndpoint(
     'Invalid Endpoint (404)',
     'GET',
