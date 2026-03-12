@@ -99,3 +99,33 @@ export function setupIncrementByFour(element) {
     }
   });
 }
+
+/**
+ * Sets up a reset button that resets the counter to zero on click
+ * @param {HTMLElement} element - The button element to attach the reset handler to
+ */
+export function setupResetCounter(element) {
+  element.addEventListener('click', async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/reset`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ value: 0 }), // Explicitly reset to 0
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to reset counter');
+      }
+
+      const data = await response.json();
+      updateCounterDisplay(data.value);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('Error resetting counter:', error);
+      // Fallback to local reset
+      updateCounterDisplay(0);
+    }
+  });
+}

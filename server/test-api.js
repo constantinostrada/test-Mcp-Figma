@@ -110,8 +110,8 @@ async function runTests() {
   );
   dec3.success ? passed++ : failed++;
 
-  // Test 8: Reset to 0
-  const reset0 = await testEndpoint('Reset to 0', 'POST', '/counter/reset');
+  // Test 8: Reset to 0 (default)
+  const reset0 = await testEndpoint('Reset to 0 (default)', 'POST', '/counter/reset');
   reset0.success ? passed++ : failed++;
 
   // Test 9: Reset to 100
