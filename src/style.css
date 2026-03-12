@@ -208,6 +208,14 @@ body {
   background-color: #33a372;
 }
 
+.button-tertiary {
+  background-color: #f44336;
+}
+
+.button-tertiary:hover {
+  background-color: #d32f2f;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   :root {
