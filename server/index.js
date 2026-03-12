@@ -105,6 +105,22 @@ app.get('/api/docs', (req, res) => {
           },
         },
       },
+      {
+        path: '/counter/increment-by-4',
+        method: 'POST',
+        description: 'Increment the counter by 4',
+        responses: {
+          200: {
+            description: 'Success',
+            example: {
+              value: 4,
+              previousValue: 0,
+              change: 4,
+              operation: 'increment-by-4',
+            },
+          },
+        },
+      },
     ],
   });
 });
@@ -124,6 +140,7 @@ app.use((req, res) => {
       'POST /api/counter/increment',
       'POST /api/counter/decrement',
       'POST /api/counter/reset',
+      'POST /api/counter/increment-by-4',
     ],
   });
 });

@@ -151,6 +151,27 @@ body {
   background-color: rgba(100, 108, 255, 0.1);
 }
 
+/* Counter Container */
+.counter-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.counter-display {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.button-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 /* Button */
 .button {
   background-color: var(--color-primary);
@@ -177,6 +198,14 @@ body {
 .button:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+}
+
+.button-secondary {
+  background-color: #42b983;
+}
+
+.button-secondary:hover {
+  background-color: #33a372;
 }
 
 /* Responsive */
