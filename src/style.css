@@ -151,6 +151,36 @@ body {
   background-color: rgba(100, 108, 255, 0.1);
 }
 
+/* Counter Display */
+.counter-display {
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.counter-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  padding: var(--spacing-md);
+  background-color: var(--color-bg);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-primary);
+}
+
+.counter-value #counter {
+  color: var(--color-primary);
+  font-size: 2.5rem;
+  margin-left: var(--spacing-sm);
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 /* Button */
 .button {
   background-color: var(--color-primary);
@@ -163,11 +193,25 @@ body {
   cursor: pointer;
   transition: background-color var(--transition), transform var(--transition);
   font-family: var(--font-family);
+  flex: 1;
+  min-width: 150px;
+}
+
+.button-large {
+  background: linear-gradient(135deg, #646cff 0%, #535bf2 100%);
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: var(--spacing-md) var(--spacing-lg);
+  box-shadow: 0 4px 12px rgba(100, 108, 255, 0.3);
 }
 
 .button:hover {
   background-color: var(--color-primary-hover);
   transform: translateY(-1px);
+}
+
+.button-large:hover {
+  box-shadow: 0 6px 16px rgba(100, 108, 255, 0.4);
 }
 
 .button:active {
@@ -195,5 +239,21 @@ body {
 
   .card {
     padding: var(--spacing-md);
+  }
+
+  .counter-value {
+    font-size: 1.5rem;
+  }
+
+  .counter-value #counter {
+    font-size: 2rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .button {
+    min-width: 100%;
   }
 }
